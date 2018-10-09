@@ -27,6 +27,27 @@ router.get('/profile', (req, res) => {
 		})
 })
 
+// usually won't be .get request but for browser test sake
+router.get('/profile/remove', (req, res) => {
+	const query = req.query
+	const id = query.id
+
+	Profile.findByIdAndRemove(id)
+	.then(data => {
+		res.json({
+			confirmation: 'success',
+			data: 'profile with id: '+ id +' successfully removed!'
+		})
+	})
+	.catch(err => {
+		res.json({
+			confirmation: 'error',
+			data: 'error'
+		})
+	})
+})
+
+// usually will be .put request but using .get for browser test
 router.get('/profile/update', (req, res) => {
 	const query = req.query
 	const id = query.id
