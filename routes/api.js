@@ -28,7 +28,22 @@ router.get('/profile', (req, res) => {
 })
 
 router.get('/profile/update', (req, res) => {
-	
+	const query = req.query
+	const id = query.id
+
+	Profile.findByIdAndUpdate(id, query, {new: true})
+	.then(profile => {
+		res.json({
+			confirmation: 'success',
+			data: profile
+		})
+	})
+	.catch(err => {
+		res.json({
+			confirmation: 'error',
+			data: 'profile with ' + id + ' not found!'
+		})
+	})
 })
 
 router.get('/profile/:id', (req, res) => {
