@@ -27,6 +27,15 @@ router.get('/profile', (req, res) => {
 		})
 })
 
+router.get('/profile/:id', (req, res) => {
+	const id = req.params.id
+
+	res.json({
+		confirmation: 'success',
+		data: id
+	})
+})
+
 
 
 module.exports = router
