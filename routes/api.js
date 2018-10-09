@@ -30,9 +30,18 @@ router.get('/profile', (req, res) => {
 router.get('/profile/:id', (req, res) => {
 	const id = req.params.id
 
-	res.json({
-		confirmation: 'success',
-		data: id
+	Profile.findById(id)
+	.then(profile => {
+		res.json({
+			confirmation: 'success',
+			data: profile
+		})
+	})
+	.catch(error=> {
+		res.json({
+			confirmation: 'error',
+			data: 'error'
+		})
 	})
 })
 
