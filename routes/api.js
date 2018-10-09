@@ -40,7 +40,7 @@ router.get('/profile/:id', (req, res) => {
 	.catch(error=> {
 		res.json({
 			confirmation: 'error',
-			data: 'error'
+			data: 'error: profile with ' + id + ' not found!'
 		})
 	})
 })
