@@ -1,0 +1,4 @@
+{  "firstName": "Ashish", "lastName": "Patel", "age": 26, "team": "dev", "position": "cto" } 
+{ "firstName": "Tom", "lastName": "Harry", "age": 27, "team": "executive", "position": "ceo" }
+{ "firstName": "Rick", "lastName": "Jonas", "age": 28, "team": "management", "position": "cfo" }
+{ "firstName": "Rich", "lastName": "Patel", "age": 25, "team": "dev", "position": "dev" }

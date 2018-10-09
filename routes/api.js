@@ -3,23 +3,24 @@ const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 
+const Profile = require('../models/Profile');
+
 /*  This is a sample API route. */
+router.get('/profile', (req, res) => {
 
-router.get('/:resource', (req, res) => {
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		query: req.query // from the url query string
-	})
-})
-
-router.get('/:resource/:id', (req, res) => {
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		id: req.params.id,
-		query: req.query // from the url query string
-	})
+	Profile.find()
+		.then(profiles => {
+			res.json({
+				confirmation: 'success',
+				data: profiles
+			})
+		})
+		.catch(err => {
+			res.json({
+				confirmation: 'error',
+				data: 'some error occured!'
+			})
+		})
 })
 
 
